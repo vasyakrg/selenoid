@@ -4,6 +4,7 @@ services:
     image: "aerokube/selenoid"
     container_name: selenoid
     # network_mode: bridge
+    command: ["--container-network", "selenoid-net"]
     ports:
       - "4444:4444"
     volumes:
@@ -24,7 +25,7 @@ services:
     #   - "8080:80"
     expose:
       - 80
-    command: ["--selenoid-uri", "http://selenoid:4444", "--listen", ":80", "--container-network", "selenoid-net"]
+    command: ["--selenoid-uri", "http://selenoid:4444", "--listen", ":80"]
     networks:
       - webproxy
       - selenoid-net
