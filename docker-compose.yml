@@ -22,8 +22,8 @@ services:
       - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
     links:
       - selenoid
-    ports:
-      - "8080:80"
+    # ports:
+    #   - "8080:80"
     command: ["--selenoid-uri", "http://selenoid:4444", "--listen", ":80"]
     networks:
       - selenoid-net
