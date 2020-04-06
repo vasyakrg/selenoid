@@ -46,6 +46,7 @@ services:
 
 networks:
   selenoid-net:
+    name: selenoid-net
   webproxy:
     external:
       name: webproxy
