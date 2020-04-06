@@ -14,10 +14,16 @@ services:
     image: "aerokube/selenoid-ui"
     container_name: selenoid-ui
     network_mode: bridge
+    environment:
+      - LETSENCRYPT_HOST=${DOMAIN_NAME}
+      - VIRTUAL_HOST=${DOMAIN_NAME}
+      - VIRTUAL_PORT=${UI_PORT}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+
     links:
       - selenoid
-    ports:
-      - "8080:8080"
+    # ports:
+    #   - "8080:8080"
     command: ["--selenoid-uri", "http://selenoid:4444"]
 
   selenoid-chrome:
