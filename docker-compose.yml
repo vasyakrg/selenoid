@@ -24,6 +24,8 @@ services:
       - selenoid
     # ports:
     #   - "8080:80"
+    expose:
+      - 80
     command: ["--selenoid-uri", "http://selenoid:4444", "--listen", ":80"]
     # networks:
     #   - selenoid-net
