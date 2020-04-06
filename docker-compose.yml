@@ -3,14 +3,14 @@ services:
   selenoid:
     image: "aerokube/selenoid"
     container_name: selenoid
-    network_mode: bridge
+    # network_mode: bridge
     ports:
       - "4444:4444"
     volumes:
       - "$PWD/config:/etc/selenoid/"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    # networks:
-    #   - selenoid-net
+    networks:
+      - selenoid-net
 
   selenoid-ui:
     image: "aerokube/selenoid-ui"
@@ -28,23 +28,26 @@ services:
       - 80
     command: ["--selenoid-uri", "http://selenoid:4444", "--listen", ":80"]
     networks:
-      - webproxy
+      # - webproxy
+      - selenoid
 
   selenoid-chrome:
     image: selenoid/chrome:latest
     container_name: selenoid-chrome
-    network_mode: bridge
-    # networks:
-    #   - selenoid-net
+    # network_mode: bridge
+    networks:
+      - selenoid-net
 
   selenoid-firefox:
     image: selenoid/firefox:latest
     container_name: selenoid-firefox
     network_mode: bridge
-    # networks:
-    #   - selenoid-net
+    networks:
+      - selenoid-net
 
 networks:
+  selenoid:
+    driver: bridge
   webproxy:
     external:
       name: webproxy
