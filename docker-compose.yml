@@ -22,6 +22,8 @@ services:
       - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
     links:
       - selenoid
+      - webproxy_gen
+      - webproxy_nginx
     # ports:
     #   - "8080:80"
     expose:
