@@ -20,13 +20,11 @@ services:
       - LETSENCRYPT_HOST=${DOMAIN_NAME}
       - VIRTUAL_HOST=${DOMAIN_NAME}
       - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
-    # links:
-    #   - selenoid
     # ports:
     #   - "8080:80"
     expose:
       - 80
-    command: ["--selenoid-uri", "http://selenoid:4444", "--listen", ":80"]
+    command: ["--selenoid-uri", "http://selenoid:4444", "--listen", ":80", "--container-network", "selenoid-net"]
     networks:
       - webproxy
       - selenoid-net
@@ -47,7 +45,6 @@ services:
 
 networks:
   selenoid-net:
-    driver: bridge
   webproxy:
     external:
       name: webproxy
