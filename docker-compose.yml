@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  selenoid:
+    image: "aerokube/selenoid"
+    container_name: selenoid
+    network_mode: bridge
+    ports:
+      - "4444:4444"
+    volumes:
+      - "$PWD/config:/etc/selenoid/"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  selenoid-ui:
+    image: "aerokube/selenoid-ui"
+    container_name: selenoid-ui
+    network_mode: bridge
+    links:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: ["--selenoid-uri", "http://selenoid:4444"]
+
+  selenoid-chrome:
+    image: selenoid/chrome:latest
+    container_name: selenoid-chrome
+    network_mode: bridge
+
+  selenoid-firefox:
+    image: selenoid/firefox:latest
+    container_name: selenoid-chrome
+    network_mode: bridge
