@@ -33,5 +33,5 @@ services:
 
   selenoid-firefox:
     image: selenoid/firefox:latest
-    container_name: selenoid-chrome
+    container_name: selenoid-firefox
     network_mode: bridge
