@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+  seleniumsiderunner1:
+    image: trianit/selenium-side-runner
+    container_name: selenoid-runner1
+    environment:
+      - SERVER=http://tests.tfm.zone:4444/wd/hub
+    volumes:
+      - './sides:/sides'
+      - './out/runner1:/root/out'
+
+  seleniumsiderunner2:
+    image: trianit/selenium-side-runner
+    container_name: selenoid-runner2
+    environment:
+      - SERVER=http://tests.tfm.zone:4444/wd/hub
+    volumes:
+      - './sides:/sides'
+      - './out/runner2:/root/out'
+
+  seleniumsiderunner3:
+    image: trianit/selenium-side-runner
+    container_name: selenoid-runner3
+    environment:
+      - SERVER=http://tests.tfm.zone:4444/wd/hub
+    volumes:
+      - './sides:/sides'
+      - './out/runner3:/root/out'
+
+  seleniumsiderunner4:
+    image: trianit/selenium-side-runner
+    container_name: selenoid-runner4
+    environment:
+      - SERVER=http://tests.tfm.zone:4444/wd/hub
+    volumes:
+      - './sides:/sides'
+      - './out/runner4:/root/out'
+
+  seleniumsiderunner5:
+    image: trianit/selenium-side-runner
+    container_name: selenoid-runner5
+    environment:
+      - SERVER=http://tests.tfm.zone:4444/wd/hub
+    volumes:
+      - './sides:/sides'
+      - './out/runner5:/root/out'
