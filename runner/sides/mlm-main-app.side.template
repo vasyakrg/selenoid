@@ -2,7 +2,7 @@
   "id": "72b71bda-9561-427f-949c-b0edfcd18eb9",
   "version": "2.0",
   "name": "mlm-main-app",
-  "url": "https://dev-yegorov.mlmsoft.com",
+  "url": "{{SITE}}",
   "tests": [{
     "id": "eee38b4c-6067-491d-9dbe-1941e8d14c61",
     "name": "login-1",
@@ -92,6 +92,6 @@
     "timeout": 300,
     "tests": ["eee38b4c-6067-491d-9dbe-1941e8d14c61"]
   }],
-  "urls": ["https://dev-yegorov.mlmsoft.com/"],
+  "urls": ["{{SITE}}"],
   "plugins": []
 }

@@ -22,4 +22,6 @@ else
 	ICON=":point_up_2:"
 fi
 
-curl -X POST --data-urlencode "payload={\"channel\": \"#tests\", \"username\": \"selenoid\", \"text\": \"$MESS\", \"icon_emoji\": \":squid:\"}" $URL
+echo $MESS
+
+curl -X POST --data-urlencode "payload={\"channel\": \"#tests\", \"username\": \"selenoid\", \"text\": '""$MESS""', \"icon_emoji\": \":squid:\"}" $URL
