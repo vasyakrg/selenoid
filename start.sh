@@ -1,17 +1,5 @@
 #!/bin/bash
 
-source lib/key
-
-[[ "$OSTYPE" == "darwin"* ]] && {
-    # 'brew install gnu-sed' before!
-    SED="gsed sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'"
-    echo "OS=Mac OS"
-
-} || {
-    SED="sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'"
-    echo "OS=linux"
-}
-
 SITE=$1
 # SITE=https://dev-yegorov.mlmsoft.com
 
@@ -44,9 +32,11 @@ RESULT=$(cat runner/out/runner1/mlm-main-app.json | jq '.numFailedTests')
     arg2="Any test of $SITE failed\n $PROBLEM"
 }
 
+source lib/slack.key
 lib/slack.sh $KEY "$arg1" "$arg2"
 # echo -e "$arg1: $arg2"
 
+echo "clear jobs"
 rm runner/sides/mlm-main-app.side
 rm runner/out/runner1/mlm-main-app.json
 echo "" > runner/sides/.env
